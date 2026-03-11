@@ -25,9 +25,9 @@ function App() {
     if (nextPg === 8 && currentPage < 7) {
       setCurrentPage(8);
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      return; 
+      return;
     }
-    
+
     // If they finished page 7 naturally, we go to 8 and submit
     if (currentPage === 7 && nextPg === 8) {
       // In Page 7 we pass the final merged data back up manually, so this block relies on what Page 7 calls directly if we let it
@@ -49,11 +49,11 @@ function App() {
   // Allow explicit passed data if state hasn't updated immediately
   const submitToGoogleSheets = async (dataToSubmit = formData) => {
     setIsSubmitting(true);
-    setCurrentPage(8); 
+    setCurrentPage(8);
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    
+
     try {
-      if(!SCRIPT_URL) {
+      if (!SCRIPT_URL) {
         console.warn("⚠️ Simulation Mode: Application missing Google Apps Script URL. Form data is:", dataToSubmit);
         // Simulate a tiny delay for realism before showing success
         await new Promise(r => setTimeout(r, 1500));
@@ -61,7 +61,7 @@ function App() {
         setIsSubmitting(false);
         return;
       }
-      
+
       const response = await fetch(SCRIPT_URL, {
         method: "POST",
         body: JSON.stringify(dataToSubmit),
@@ -104,7 +104,7 @@ function App() {
   return (
     <div className="app-container">
       <div className="glass-panel">
-        
+
         {currentPage < 8 && (
           <div className="progress-container">
             <div className="progress-bar" style={{ width: `${calculateProgress()}%` }}></div>
@@ -114,7 +114,7 @@ function App() {
         {currentPage < 8 && (
           <h1 style={{ marginBottom: "1.5rem" }}>แบบสอบถามงานวิจัย: อิทธิพลของอคติทางความคิดต่อพฤติกรรมการเลือกซื้อสลากกินแบ่งรัฐบาล</h1>
         )}
-        
+
         <div key={currentPage} className="fade-in">
           {renderContent()}
         </div>

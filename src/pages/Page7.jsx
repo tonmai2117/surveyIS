@@ -25,7 +25,7 @@ function Page7({ onNext, updateData, formData, submitToGoogle }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (sum <= 5) {
+    if (sum === 5) {
       Object.keys(data).forEach(key => updateData(key, data[key]));
       onNext(8);
       // We automatically trigger submission on transition to 8. Or we can trigger it here directly:
@@ -42,9 +42,9 @@ function Page7({ onNext, updateData, formData, submitToGoogle }) {
       <div className="glass-panel" style={{ background: '#f8fafc', padding: '1.5rem', marginBottom: '2rem' }}>
         <strong>สถานการณ์:</strong> สมมติว่าท่านมีงบประมาณจำกัดที่ 400 บาท ซึ่งสามารถนำไปซื้อสลากได้ 5 ใบ (สลากใบละ 80 บาท)
         <br/><br/>
-        ท่านจะจัดสรรเงินจำนวนนี้ในการซื้อสลากที่ท่านได้เลือกตัวเลขด้วยตนเองอย่างไร (ใส่จำนวนใบ รวมกันได้สูงสุดไม่เกิน 5 ใบ)
+        ท่านจะจัดสรรเงินจำนวนนี้ในการซื้อสลากที่ท่านได้เลือกตัวเลขด้วยตนเองอย่างไร (ใส่จำนวนใบ รวมกันให้ครบ 5 ใบพอดี)
         
-        <div style={{ marginTop: '1rem', fontWeight: 'bold', color: sum > 5 ? 'red' : 'var(--primary-color)' }}>
+        <div style={{ marginTop: '1rem', fontWeight: 'bold', color: sum !== 5 ? 'red' : 'var(--primary-color)' }}>
           สลากที่ใช้ไป: {sum} / 5 ใบ
         </div>
       </div>
@@ -101,7 +101,7 @@ function Page7({ onNext, updateData, formData, submitToGoogle }) {
       </div>
 
       <div className="btn-container">
-        <button type="submit" className="btn btn-primary" disabled={sum > 5}>
+        <button type="submit" className="btn btn-primary" disabled={sum !== 5}>
           ส่งคำตอบ
         </button>
       </div>
