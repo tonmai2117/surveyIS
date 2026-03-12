@@ -12,7 +12,7 @@ function Page7({ onNext, updateData, formData, submitToGoogle }) {
   const handleChange = (name, value) => {
     let num = Number(value.replace(/\D/g, ''));
     if (isNaN(num)) num = 0;
-    
+
     // Validate if the intended change exceeds 5 tickets, we just cap it or block it. Better to let them type if it's less than 5 total.
     setData(prev => {
       const remainingSumWithoutCurrent = sum - Number(prev[name]);
@@ -38,12 +38,12 @@ function Page7({ onNext, updateData, formData, submitToGoogle }) {
     <form onSubmit={handleSubmit}>
       <h2>ส่วนที่ 5: การทดสอบภาพลวงตาของการควบคุม</h2>
       <p>คำชี้แจง: ระบบนำตัวเลขที่ท่านเลือกในส่วนที่ 3 มาใช้ในสถานการณ์สมมตินี้</p>
-      
+
       <div className="glass-panel" style={{ background: '#f8fafc', padding: '1.5rem', marginBottom: '2rem' }}>
         <strong>สถานการณ์:</strong> สมมติว่าท่านมีงบประมาณจำกัดที่ 400 บาท ซึ่งสามารถนำไปซื้อสลากได้ 5 ใบ (สลากใบละ 80 บาท)
-        <br/><br/>
+        <br /><br />
         ท่านจะจัดสรรเงินจำนวนนี้ในการซื้อสลากที่ท่านได้เลือกตัวเลขด้วยตนเองอย่างไร (ใส่จำนวนใบ รวมกันให้ครบ 5 ใบพอดี)
-        
+
         <div style={{ marginTop: '1rem', fontWeight: 'bold', color: sum !== 5 ? 'red' : 'var(--primary-color)' }}>
           สลากที่ใช้ไป: {sum} / 5 ใบ
         </div>
@@ -54,13 +54,13 @@ function Page7({ onNext, updateData, formData, submitToGoogle }) {
           เลขชุดที่ 1: <strong>{formData.Random_Number || '000000'}</strong>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <input 
-            type="number" 
-            min="0" max="5" 
-            value={data.Allocated_Set_1} 
-            onChange={(e) => handleChange('Allocated_Set_1', e.target.value)} 
-            className="text-input" 
-            style={{ width: '80px', textAlign: 'center' }} 
+          <input
+            type="number"
+            min="0" max="5"
+            value={data.Allocated_Set_1}
+            onChange={(e) => handleChange('Allocated_Set_1', e.target.value)}
+            className="text-input"
+            style={{ width: '80px', textAlign: 'center' }}
           />
           <span style={{ fontWeight: '500' }}>ใบ</span>
         </div>
@@ -71,13 +71,13 @@ function Page7({ onNext, updateData, formData, submitToGoogle }) {
           เลขชุดที่ 2: <strong>{formData.Personal_Number || '000000'}</strong>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <input 
-            type="number" 
-            min="0" max="5" 
-            value={data.Allocated_Set_2} 
-            onChange={(e) => handleChange('Allocated_Set_2', e.target.value)} 
-            className="text-input" 
-            style={{ width: '80px', textAlign: 'center' }} 
+          <input
+            type="number"
+            min="0" max="5"
+            value={data.Allocated_Set_2}
+            onChange={(e) => handleChange('Allocated_Set_2', e.target.value)}
+            className="text-input"
+            style={{ width: '80px', textAlign: 'center' }}
           />
           <span style={{ fontWeight: '500' }}>ใบ</span>
         </div>
@@ -88,13 +88,13 @@ function Page7({ onNext, updateData, formData, submitToGoogle }) {
           เลขชุดที่ 3: <strong>{formData.Social_Number || '000000'}</strong>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <input 
-            type="number" 
-            min="0" max="5" 
-            value={data.Allocated_Set_3} 
-            onChange={(e) => handleChange('Allocated_Set_3', e.target.value)} 
-            className="text-input" 
-            style={{ width: '80px', textAlign: 'center' }} 
+          <input
+            type="number"
+            min="0" max="5"
+            value={data.Allocated_Set_3}
+            onChange={(e) => handleChange('Allocated_Set_3', e.target.value)}
+            className="text-input"
+            style={{ width: '80px', textAlign: 'center' }}
           />
           <span style={{ fontWeight: '500' }}>ใบ</span>
         </div>

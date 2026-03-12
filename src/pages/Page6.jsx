@@ -48,7 +48,7 @@ function Page6({ onNext, updateData, formData }) {
       <div className="question-block">
         <div className="question-text">2. ในการออกรางวัลสลากกินแบ่งรัฐบาล ระหว่างชุดตัวเลข 123456 กับชุดตัวเลขเลขที่ 598321 เลขชุดใดมีโอกาสถูกรางวัลที่ 1 มากกว่ากัน?</div>
         <div className="radio-group">
-          {['ก. 598321 มีโอกาสมากกว่า', 'ข. 123456 มีโอกาสน้องกว่า', 'ค. ทั้งสองเลขมีโอกาสถูกรางวัลเท่ากันเป๊ะ'].map(option => (
+          {['ก. 598321 มีโอกาสน้อยกว่า', 'ข. 123456 มีโอกาสน้อยกว่า', 'ค. ทั้งสองเลขมีโอกาสถูกรางวัลเท่ากันเป๊ะ'].map(option => (
             <label key={option} className={`radio-label ${data.Stat_Q2 === option ? 'selected' : ''}`}>
               <input type="radio" name="Stat_Q2" value={option} checked={data.Stat_Q2 === option} onChange={(e) => handleChange('Stat_Q2', e.target.value)} className="radio-input" />
               {option}
@@ -84,7 +84,7 @@ function Page6({ onNext, updateData, formData }) {
       <div className="question-block">
         <div className="question-text">5. ในการทอยลูกเต๋า 2 ลูกพร้อมกัน ท่านคิดว่าเหตุการณ์ใด เกิดขึ้นได้น้อยกว่า?</div>
         <div className="radio-group">
-          {['ก. ลูกที่ 1 ได้ 6, ลูกที่ 2 ได้ 6', 'ข. ลูกที่ 1 ได้ 5, ลูกที่ 2 ได้ 6', 'ค. ทั้งสองเหตุการณ์มีโอกาสเกิดขึ้นเท่ากัน'].map(option => (
+          {['ก. ออก 6 ทั้ง 2 ลูก', 'ข. ออก 5 และ 6', 'ค. ทั้งสองเหตุการณ์มีโอกาสเกิดขึ้นเท่ากัน'].map(option => (
             <label key={option} className={`radio-label ${data.Stat_Q5 === option ? 'selected' : ''}`}>
               <input type="radio" name="Stat_Q5" value={option} checked={data.Stat_Q5 === option} onChange={(e) => handleChange('Stat_Q5', e.target.value)} className="radio-input" />
               {option}

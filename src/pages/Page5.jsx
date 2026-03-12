@@ -13,7 +13,20 @@ function Page5({ onNext, updateData, formData }) {
     setData(prev => ({ ...prev, [name]: formatted }));
   };
 
-  const isFormValid = Object.values(data).every(val => val.length === 6);
+  const { Random_Number, Personal_Number, Social_Number } = data;
+
+  const isAllFilled = Object.values(data).every(val => val.length === 6);
+
+  // ตรวจสอบว่ามีตัวเลขซ้ำกันหรือไม่
+  const hasDuplicates = () => {
+    if (!isAllFilled) return false;
+    if (Random_Number === Personal_Number) return true;
+    if (Random_Number === Social_Number) return true;
+    if (Personal_Number === Social_Number) return true;
+    return false;
+  };
+
+  const isFormValid = isAllFilled && !hasDuplicates();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,12 +43,12 @@ function Page5({ onNext, updateData, formData }) {
 
       <div className="question-block">
         <div className="question-text">1. หากท่านต้องซื้อสลากจากการสุ่มเลขโปรดระบุ "เลขสลาก 6 หลัก" ที่ท่านต้องการซื้อมากที่สุดในงวดนี้</div>
-        <input 
-          type="text" 
-          value={data.Random_Number} 
+        <input
+          type="text"
+          value={data.Random_Number}
           onChange={(e) => handleChange('Random_Number', e.target.value)}
-          placeholder="000000" 
-          className="text-input" 
+          placeholder="000000"
+          className="text-input"
           maxLength="6"
         />
         {data.Random_Number.length > 0 && data.Random_Number.length < 6 && (
@@ -45,29 +58,34 @@ function Page5({ onNext, updateData, formData }) {
 
       <div className="question-block">
         <div className="question-text">2. หากท่านต้องซื้อสลากจาก "เลขเด็ดส่วนตัว" (เช่น ความฝัน วันเกิด ทะเบียนรถ) โปรดระบุ "เลขสลาก 6 หลัก" ที่ต้องซื้อ</div>
-        <input 
-          type="text" 
-          value={data.Personal_Number} 
+        <input
+          type="text"
+          value={data.Personal_Number}
           onChange={(e) => handleChange('Personal_Number', e.target.value)}
-          placeholder="000000" 
-          className="text-input" 
+          placeholder="000000"
+          className="text-input"
           maxLength="6"
         />
       </div>
 
       <div className="question-block">
         <div className="question-text">3. หากท่านต้องซื้อสลากจาก "เลขเด็ดในสังคม" (สิ่งศักดิ์สิทธิ์ เลขข่าวดัง) โปรดระบุ "เลขสลาก 6 หลัก" ที่ต้องซื้อ</div>
-        <input 
-          type="text" 
-          value={data.Social_Number} 
+        <input
+          type="text"
+          value={data.Social_Number}
           onChange={(e) => handleChange('Social_Number', e.target.value)}
-          placeholder="000000" 
-          className="text-input" 
+          placeholder="000000"
+          className="text-input"
           maxLength="6"
         />
       </div>
 
       <div className="btn-container">
+        {hasDuplicates() && (
+          <div style={{ color: '#ef4444', marginBottom: '1rem', fontWeight: 'bold' }}>
+            * กรุณากรอกชุดตัวเลขให้แตกต่างกันทั้ง 3 ชุด
+          </div>
+        )}
         <button type="submit" className="btn btn-primary" disabled={!isFormValid}>ต่อไป</button>
       </div>
     </form>

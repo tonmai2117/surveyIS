@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './index.css';
 
+import Page0 from './pages/Page0';
 import Page1 from './pages/Page1';
 import Page2 from './pages/Page2';
 import Page3 from './pages/Page3';
@@ -11,7 +12,7 @@ import Page7 from './pages/Page7';
 import Page8 from './pages/Page8';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(0);
   const [formData, setFormData] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(null);
@@ -76,6 +77,8 @@ function App() {
 
   const renderContent = () => {
     switch (currentPage) {
+      case 0:
+        return <Page0 onNext={handleNext} />;
       case 1:
         return <Page1 onNext={handleNext} updateData={updateData} formData={formData} />;
       case 2:
@@ -98,6 +101,7 @@ function App() {
   };
 
   const calculateProgress = () => {
+    if (currentPage === 0) return 0;
     return ((currentPage - 1) / (totalPages - 1)) * 100;
   };
 
@@ -105,13 +109,13 @@ function App() {
     <div className="app-container">
       <div className="glass-panel">
 
-        {currentPage < 8 && (
+        {currentPage > 0 && currentPage < 8 && (
           <div className="progress-container">
             <div className="progress-bar" style={{ width: `${calculateProgress()}%` }}></div>
           </div>
         )}
 
-        {currentPage < 8 && (
+        {currentPage > 0 && currentPage < 8 && (
           <h1 style={{ marginBottom: "1.5rem" }}>แบบสอบถามงานวิจัย: อิทธิพลของอคติทางความคิดต่อพฤติกรรมการเลือกซื้อสลากกินแบ่งรัฐบาล</h1>
         )}
 
