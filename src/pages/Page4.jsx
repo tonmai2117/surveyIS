@@ -17,10 +17,10 @@ function Page4({ onNext, updateData, formData }) {
     e.preventDefault();
     if (Object.values(data).every(val => val !== '')) {
       Object.keys(data).forEach(key => updateData(key, data[key]));
-      
-      // Logic requirement: If never bought, jump to page 8 immediately
+
+      // Logic requirement: If never bought, jump to page 11 immediately
       if (data.Bought_At_Least_2_Times === 'ไม่เคย') {
-        onNext(8);
+        onNext(11);
       } else {
         onNext(5);
       }
@@ -35,7 +35,7 @@ function Page4({ onNext, updateData, formData }) {
       <p>คำชี้แจง: โปรดระบุข้อมูลเกี่ยวกับพฤติกรรมการซื้อสลากของท่าน</p>
 
       <div className="question-block">
-        <div className="question-text">1. ท่านเคยซื้อสลากกินแบ่งรัฐบาล อย่างน้อย 2 ครั้งในรอบ 3 เดือนที่ผ่านมาหรือไม่?</div>
+        <div className="question-text">1. ท่านเคยซื้อสลากกินแบ่งรัฐบาล อย่างน้อย 2 ครั้งในรอบ 6 เดือนที่ผ่านมาหรือไม่?</div>
         <div className="radio-group">
           {['เคย', 'ไม่เคย'].map(option => (
             <label key={option} className={`radio-label ${data.Bought_At_Least_2_Times === option ? 'selected' : ''}`}>

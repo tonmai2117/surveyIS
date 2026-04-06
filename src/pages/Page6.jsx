@@ -22,7 +22,7 @@ function Page6({ onNext, updateData, formData }) {
         const shortAnswer = fullAnswer.split(' ')[0]; // Splits by space and takes the first element (e.g. "ก.")
         updateData(key, shortAnswer);
       });
-      onNext(7);
+      onNext(10);
     }
   };
 
@@ -82,9 +82,9 @@ function Page6({ onNext, updateData, formData }) {
       </div>
 
       <div className="question-block">
-        <div className="question-text">5. ในการทอยลูกเต๋า 2 ลูกพร้อมกัน ท่านคิดว่าเหตุการณ์ใด เกิดขึ้นได้น้อยกว่า?</div>
+        <div className="question-text">5. นาย ก. โยนเหรียญที่เที่ยงตรงจำนวน 10 ครั้ง ส่วนนาย ข. โยนเหรียญที่เที่ยงตรง (แบบเดียวกัน) จำนวน 1,000 ครั้ง ท่านคิดว่าใครมีโอกาสที่จะได้ผลลัพธ์ออกเป็น "หัว" ในสัดส่วนที่เกิน 60% ของจำนวนครั้งที่ตนเองโยน มากกว่ากัน?</div>
         <div className="radio-group">
-          {['ก. ออก 6 ทั้ง 2 ลูก', 'ข. ออก 5 และ 6', 'ค. ทั้งสองเหตุการณ์มีโอกาสเกิดขึ้นเท่ากัน'].map(option => (
+          {['ก. นาย ก. (โยน 10 ครั้ง) มีโอกาสเกิดเหตุการณ์นี้มากกว่า', 'ข. นาย ข. (โยน 1,000 ครั้ง) มีโอกาสเกิดเหตุการณ์นี้มากกว่า', 'ค. ทั้งสองคนมีโอกาสเกิดเหตุการณ์นี้เท่ากัน'].map(option => (
             <label key={option} className={`radio-label ${data.Stat_Q5 === option ? 'selected' : ''}`}>
               <input type="radio" name="Stat_Q5" value={option} checked={data.Stat_Q5 === option} onChange={(e) => handleChange('Stat_Q5', e.target.value)} className="radio-input" />
               {option}

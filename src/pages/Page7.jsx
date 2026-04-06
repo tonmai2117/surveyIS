@@ -27,8 +27,8 @@ function Page7({ onNext, updateData, formData, submitToGoogle }) {
     e.preventDefault();
     if (sum === 5) {
       Object.keys(data).forEach(key => updateData(key, data[key]));
-      onNext(8);
-      // We automatically trigger submission on transition to 8. Or we can trigger it here directly:
+      onNext(11);
+      // We automatically trigger submission on transition to 11. Or we can trigger it here directly:
       // We pass the new form data explicitly since state might be one tick behind in App.jsx
       submitToGoogle({ ...formData, ...data });
     }

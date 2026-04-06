@@ -7,6 +7,9 @@ import Page2 from './pages/Page2';
 import Page3 from './pages/Page3';
 import Page4 from './pages/Page4';
 import Page5 from './pages/Page5';
+import Page5a from './pages/Page5a';
+import Page5b from './pages/Page5b';
+import Page5c from './pages/Page5c';
 import Page6 from './pages/Page6';
 import Page7 from './pages/Page7';
 import Page8 from './pages/Page8';
@@ -17,24 +20,24 @@ function App() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(null);
 
-  const totalPages = 8;
+  const totalPages = 11;
   const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyFkwhBwAq4ghFJTLFtjaaIvclKNgTq0GdGsfwyOVMU6mVp7tgmfU376TE1L2u2x-MP/exec';
 
   const handleNext = (nextPg) => {
-    // If we jump completely to page 8 early, we DO NOT submit data
+    // If we jump completely to page 11 early, we DO NOT submit data
     // because they failed consent or screening. We just show the thank you page.
-    if (nextPg === 8 && currentPage < 7) {
-      setCurrentPage(8);
+    if (nextPg === 11 && currentPage < 10) {
+      setCurrentPage(11);
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
 
-    // If they finished page 7 naturally, we go to 8 and submit
-    if (currentPage === 7 && nextPg === 8) {
-      // In Page 7 we pass the final merged data back up manually, so this block relies on what Page 7 calls directly if we let it
-      // Actually, since Page 7 calls submitToGoogle directly, we shouldn't submit twice.
-      // So we just transition the UI, the submission is handled by Page 7 calling `submitToGoogleSheets(customData)`
-      setCurrentPage(8);
+    // If they finished page 10 naturally, we go to 11 and submit
+    if (currentPage === 10 && nextPg === 11) {
+      // In Page 10 we pass the final merged data back up manually, so this block relies on what Page 10 calls directly if we let it
+      // Actually, since Page 10 calls submitToGoogle directly, we shouldn't submit twice.
+      // So we just transition the UI, the submission is handled by Page 10 calling `submitToGoogleSheets(customData)`
+      setCurrentPage(11);
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
@@ -50,7 +53,7 @@ function App() {
   // Allow explicit passed data if state hasn't updated immediately
   const submitToGoogleSheets = async (dataToSubmit = formData) => {
     setIsSubmitting(true);
-    setCurrentPage(8);
+    setCurrentPage(11);
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     try {
@@ -90,10 +93,16 @@ function App() {
       case 5:
         return <Page5 onNext={handleNext} updateData={updateData} formData={formData} />;
       case 6:
-        return <Page6 onNext={handleNext} updateData={updateData} formData={formData} />;
+        return <Page5a onNext={handleNext} updateData={updateData} formData={formData} />;
       case 7:
-        return <Page7 onNext={handleNext} updateData={updateData} formData={formData} submitToGoogle={submitToGoogleSheets} />;
+        return <Page5b onNext={handleNext} updateData={updateData} formData={formData} />;
       case 8:
+        return <Page5c onNext={handleNext} updateData={updateData} formData={formData} />;
+      case 9:
+        return <Page6 onNext={handleNext} updateData={updateData} formData={formData} />;
+      case 10:
+        return <Page7 onNext={handleNext} updateData={updateData} formData={formData} submitToGoogle={submitToGoogleSheets} />;
+      case 11:
         return <Page8 isSubmitting={isSubmitting} submitSuccess={submitSuccess} formData={formData} />;
       default:
         return <div>Unknown Page</div>;
@@ -109,13 +118,13 @@ function App() {
     <div className="app-container">
       <div className="glass-panel">
 
-        {currentPage > 0 && currentPage < 8 && (
+        {currentPage > 0 && currentPage < 11 && (
           <div className="progress-container">
             <div className="progress-bar" style={{ width: `${calculateProgress()}%` }}></div>
           </div>
         )}
 
-        {currentPage > 0 && currentPage < 8 && (
+        {currentPage > 0 && currentPage < 11 && (
           <h1 style={{ marginBottom: "1.5rem" }}>แบบสอบถามงานวิจัย: อิทธิพลของอคติทางความคิดต่อพฤติกรรมการเลือกซื้อสลากกินแบ่งรัฐบาล</h1>
         )}
 

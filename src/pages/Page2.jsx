@@ -8,7 +8,7 @@ function Page2({ onNext, updateData, formData }) {
     if (qualify) {
       updateData('QualifyScreening', qualify);
       if (qualify === 'ไม่') {
-        onNext(8); // End survey
+        onNext(11); // End survey
       } else {
         onNext(3);
       }
@@ -21,7 +21,7 @@ function Page2({ onNext, updateData, formData }) {
       <p className="text-light text-sm mb-4">หมายเหตุ: เพื่อให้ได้กลุ่มผู้ตอบแบบสอบถามที่ตรงตามพิสัยของงานวิจัย</p>
 
       <div className="question-block">
-        <div className="question-text">ท่านเป็นบุคคลที่มีอายุมากกว่า 20 ปี และเคยซื้อสลากกินแบ่งรัฐบาลไทย อย่างน้อย 2 ครั้งในช่วง 3 เดือนที่ผ่านมา?</div>
+        <div className="question-text">ท่านเป็นบุคคลที่มีอายุมากกว่า 20 ปี และเคยซื้อสลากกินแบ่งรัฐบาลไทย อย่างน้อย 2 ครั้งในช่วง 6 เดือนที่ผ่านมา?</div>
         <div className="radio-group">
           {['ใช่', 'ไม่'].map(option => (
             <label key={option} className={`radio-label ${qualify === option ? 'selected' : ''}`}>
