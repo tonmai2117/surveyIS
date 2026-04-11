@@ -17,7 +17,7 @@ function Page2({ onNext, updateData, formData }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>แบบคัดกรองเบื้องต้น (Screening Form)</h2>
+      <h2>แบบคัดกรองเบื้องต้น</h2>
       <p className="text-light text-sm mb-4">หมายเหตุ: เพื่อให้ได้กลุ่มผู้ตอบแบบสอบถามที่ตรงตามพิสัยของงานวิจัย</p>
 
       <div className="question-block">

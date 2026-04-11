@@ -30,13 +30,13 @@ function Page6({ onNext, updateData, formData }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>ส่วนที่ 4: แบบทดสอบความรู้สถิติเบื้องต้น (Statistical Literacy Test)</h2>
+      <h2>ส่วนที่ 4: แบบทดสอบความรู้สถิติเบื้องต้น</h2>
       <p>คำชี้แจง: แบบทดสอบจำนวน 5 ข้อ เพื่อวัดความเข้าใจเรื่องโอกาสและความน่าจะเป็น</p>
 
       <div className="question-block">
-        <div className="question-text">1. ในการจับลูกบอลออกจากกล่อง ในกล่องมีลูกบอลสีขาว 10 ลูก สีดำ 10 ลูก ครั้งแรกจับได้สีขาว เมื่อจับเสร็จใส่ลูกบอลดังกล่าวกลับลงไปในกล่องแล้วจับใหม่ ลูกบอลที่จับได้ในครั้งต่อไปจะเป็นสีขาว หรือสีดำ</div>
+        <div className="question-text">1. ในกล่องมีลูกบอลขาว 10 ลูก ดำ 10 ลูก ครั้งแรกจับได้สีขาวแล้วใส่คืน ครั้งต่อไปจะจับได้ลูกบอลสีขาวมากขึ้นหรือน้อยลง?</div>
         <div className="radio-group">
-          {['ก. มีโอกาสออก "ขาว" มากกว่า', 'ข. มีโอกาสออก "ดำ" มากกว่า', 'ค. มีโอกาสออก "ดำ" และ "ขาว" เท่ากัน 50/50'].map(option => (
+          {['ก. มากขึ้น', 'ข. น้อยลง', 'ค. เท่าเดิม'].map(option => (
             <label key={option} className={`radio-label ${data.Stat_Q1 === option ? 'selected' : ''}`}>
               <input type="radio" name="Stat_Q1" value={option} checked={data.Stat_Q1 === option} onChange={(e) => handleChange('Stat_Q1', e.target.value)} className="radio-input" />
               {option}

@@ -6,6 +6,7 @@ function Page4({ onNext, updateData, formData }) {
     Bought_At_Least_2_Times: formData.Bought_At_Least_2_Times || '',
     Tickets_Per_Draw: formData.Tickets_Per_Draw || '',
     Frequency: formData.Frequency || '',
+    Last_Won_Source: formData.Last_Won_Source || '',
     Won_Last_Draw: formData.Won_Last_Draw || ''
   });
 
@@ -31,7 +32,7 @@ function Page4({ onNext, updateData, formData }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>ส่วนที่ 2: ประสบการณ์และความรู้พื้นฐาน (Experience)</h2>
+      <h2>ส่วนที่ 2: ประสบการณ์และความรู้พื้นฐาน</h2>
       <p>คำชี้แจง: โปรดระบุข้อมูลเกี่ยวกับพฤติกรรมการซื้อสลากของท่าน</p>
 
       <div className="question-block">
@@ -64,7 +65,7 @@ function Page4({ onNext, updateData, formData }) {
       <div className="question-block">
         <div className="question-text">3. ความถี่ในการซื้อสลากของท่าน</div>
         <div className="radio-group">
-          {['ซื้อทุกงวด (2 ครั้งต่อเดือน)', 'ซื้อเกือบทุกงวด (เดือนละครั้ง)', 'นานๆ ครั้ง (ปีละไม่กี่ครั้ง)'].map(option => (
+          {['ซื้อทุกงวด', 'ซื้อเดือนละครั้ง', 'ซื้อนานๆ ครั้งไม่ได้ซื้อทุกเดือน แล้วแต่โอกาส'].map(option => (
             <label key={option} className={`radio-label ${data.Frequency === option ? 'selected' : ''}`}>
               <input type="radio" name="Frequency" value={option} checked={data.Frequency === option} onChange={(e) => handleChange('Frequency', e.target.value)} className="radio-input" />
               {option}
@@ -74,8 +75,20 @@ function Page4({ onNext, updateData, formData }) {
       </div>
 
       <div className="question-block">
+        <div className="question-text">4. ครั้งล่าสุดที่ท่านถูกรางวัล ท่านได้ตัวเลขจากที่มาใด</div>
+        <div className="radio-group">
+          {['ไม่เคยถูกรางวัลมาก่อนเลย', 'เลขจากการสุ่ม', 'เลขเด็ดส่วนตัว', 'เลขเด็ดในสังคม'].map(option => (
+            <label key={option} className={`radio-label ${data.Last_Won_Source === option ? 'selected' : ''}`}>
+              <input type="radio" name="Last_Won_Source" value={option} checked={data.Last_Won_Source === option} onChange={(e) => handleChange('Last_Won_Source', e.target.value)} className="radio-input" />
+              {option}
+            </label>
+          ))}
+        </div>
+      </div>
+
+      <div className="question-block">
         <div className="question-text">
-          4. ในงวดล่าสุดที่ผ่านมา ประจำวันที่ {LOTTERY_CONFIG.drawDate} รางวัลที่ 1: {LOTTERY_CONFIG.firstPrize} เลขท้าย 2 ตัว: {LOTTERY_CONFIG.lastTwoDigits} ท่านถูกรางวัลใดๆ หรือไม่?
+          5. ในงวดล่าสุดที่ผ่านมา ประจำวันที่ {LOTTERY_CONFIG.drawDate} รางวัลที่ 1: {LOTTERY_CONFIG.firstPrize} เลขท้าย 2 ตัว: {LOTTERY_CONFIG.lastTwoDigits} ท่านถูกรางวัลใดๆ หรือไม่?
         </div>
         <div className="radio-group">
           {['ถูกรางวัล', 'ไม่ถูกรางวัล', 'ไม่ได้ซื้อในสลากในงวดดังกล่าว'].map(option => (

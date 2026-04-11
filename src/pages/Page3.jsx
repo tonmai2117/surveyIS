@@ -24,7 +24,7 @@ function Page3({ onNext, updateData, formData }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>ส่วนที่ 1: ปัจจัยทางประชากรศาสตร์ (Demographic)</h2>
+      <h2>ส่วนที่ 1: ปัจจัยทางประชากรศาสตร์ </h2>
       <p>คำชี้แจง: โปรดเลือกคำตอบที่ตรงกับความเป็นจริงของท่านที่สุด</p>
 
       <div className="question-block">
@@ -54,7 +54,7 @@ function Page3({ onNext, updateData, formData }) {
       <div className="question-block">
         <div className="question-text">3. รายได้เฉลี่ยต่อเดือน</div>
         <div className="radio-group">
-          {['น้อยกว่า 15,000 บาท', '15,001 - 30,000 บาท', '30,001 - 50,000 บาท', '50,001 - 100,000 บาท', 'มากกว่า 100,000 บาท'].map(option => (
+          {['น้อยกว่า 9,000 บาท', '9,001 - 15,000 บาท', '15,001 - 30,000 บาท', '30,001 - 50,000 บาท', '50,001 - 100,000 บาท', 'มากกว่า 100,000 บาท'].map(option => (
             <label key={option} className={`radio-label ${data.Income === option ? 'selected' : ''}`}>
               <input type="radio" name="Income" value={option} checked={data.Income === option} onChange={(e) => handleChange('Income', e.target.value)} className="radio-input" />
               {option}
