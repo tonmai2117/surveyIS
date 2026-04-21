@@ -22,7 +22,7 @@ function Page0({ onNext }) {
           <li style={{ marginBottom: "0.5rem" }}><strong>ส่วนที่ 3:</strong> การทดสอบพฤติกรรมการเลือกตัวเลข</li>
           <li style={{ marginBottom: "0.5rem" }}><strong>ส่วนที่ 4:</strong> แบบทดสอบความรู้ทางสถิติ</li>
           <li style={{ marginBottom: "0.5rem" }}><strong>ส่วนที่ 5:</strong> การทดสอบภาพลวงตาของการควบคุม</li>
-          <li style={{ marginBottom: "0.5rem" }}><strong>ส่วนที่ 6:</strong> สไตย์นักช็อปสลากของคุณ</li>
+          <li style={{ marginBottom: "0.5rem" }}><strong>ส่วนที่ 6:</strong> สไตล์นักช็อปสลากของคุณ</li>
         </ul>
 
         <p style={{ fontSize: "0.9rem", color: "var(--text-light)", fontStyle: "italic", margin: 0, padding: "1rem", background: "#f1f5f9", borderRadius: "8px" }}>
