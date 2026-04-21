@@ -42,7 +42,7 @@ function Page3({ onNext, updateData, formData }) {
       <div className="question-block">
         <div className="question-text">2. อายุ</div>
         <div className="radio-group">
-          {['20-25 ปี', '26-30 ปี', '31-35 ปี', '36-40 ปี', 'มากกว่า 41 ปี'].map(option => (
+          {['20-29 ปี', '30-39 ปี', '40-49 ปี', '50-59 ปี', 'มากกว่า 60 ปี'].map(option => (
             <label key={option} className={`radio-label ${data.Age_Range === option ? 'selected' : ''}`}>
               <input type="radio" name="Age_Range" value={option} checked={data.Age_Range === option} onChange={(e) => handleChange('Age_Range', e.target.value)} className="radio-input" />
               {option}
