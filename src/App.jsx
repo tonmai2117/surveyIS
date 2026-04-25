@@ -34,9 +34,7 @@ function App() {
 
     // If they finished page 10 naturally, we go to 11 and submit
     if (currentPage === 10 && nextPg === 11) {
-      // In Page 10 we pass the final merged data back up manually, so this block relies on what Page 10 calls directly if we let it
-      // Actually, since Page 10 calls submitToGoogle directly, we shouldn't submit twice.
-      // So we just transition the UI, the submission is handled by Page 10 calling `submitToGoogleSheets(customData)`
+      // Submission is handled by Page7 calling submitToGoogleSheets(customData)
       setCurrentPage(11);
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
@@ -50,15 +48,33 @@ function App() {
     setFormData(prev => ({ ...prev, [key]: value }));
   };
 
+  const getBangkokTimestamp = () => {
+    return new Date().toLocaleString("sv-SE", {
+      timeZone: "Asia/Bangkok",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false,
+    });
+  };
+
   // Allow explicit passed data if state hasn't updated immediately
   const submitToGoogleSheets = async (dataToSubmit = formData) => {
+    const payload = {
+      ...dataToSubmit,
+      Survey_End_Timestamp: getBangkokTimestamp(),
+    };
+
     setIsSubmitting(true);
     setCurrentPage(11);
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     try {
       if (!SCRIPT_URL) {
-        console.warn("⚠️ Simulation Mode: Application missing Google Apps Script URL. Form data is:", dataToSubmit);
+        console.warn("⚠️ Simulation Mode: Application missing Google Apps Script URL. Form data is:", payload);
         // Simulate a tiny delay for realism before showing success
         await new Promise(r => setTimeout(r, 1500));
         setSubmitSuccess(true);
@@ -66,15 +82,17 @@ function App() {
         return;
       }
 
-      const response = await fetch(SCRIPT_URL, {
+      await fetch(SCRIPT_URL, {
         method: "POST",
-        body: JSON.stringify(dataToSubmit),
+        body: JSON.stringify(payload),
       });
+
       setSubmitSuccess(true);
     } catch (error) {
       console.error("Submission failed", error);
       setSubmitSuccess(false);
     }
+
     setIsSubmitting(false);
   };
 
@@ -125,7 +143,9 @@ function App() {
         )}
 
         {currentPage > 0 && currentPage < 11 && (
-          <h1 style={{ marginBottom: "1.5rem" }}>แบบสอบถามงานวิจัย: อิทธิพลของอคติทางความคิดต่อพฤติกรรมการเลือกซื้อสลากกินแบ่งรัฐบาล</h1>
+          <h1 style={{ marginBottom: "1.5rem" }}>
+            แบบสอบถามงานวิจัย: อิทธิพลของอคติทางความคิดต่อพฤติกรรมการเลือกซื้อสลากกินแบ่งรัฐบาล
+          </h1>
         )}
 
         <div key={currentPage} className="fade-in">
@@ -137,3 +157,4 @@ function App() {
 }
 
 export default App;
+
