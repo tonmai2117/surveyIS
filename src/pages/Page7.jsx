@@ -44,8 +44,9 @@ function Page7({ onNext, updateData, formData, submitToGoogle }) {
         <br /><br />
         ท่านจะจัดสรรเงินจำนวนนี้ในการซื้อสลากที่ท่านได้เลือกตัวเลขด้วยตนเองอย่างไร (ใส่จำนวนใบ รวมกันให้ครบ 5 ใบพอดี)
 
-        <div style={{ marginTop: '1rem', fontWeight: 'bold', color: sum !== 5 ? 'red' : 'var(--primary-color)' }}>
-          สลากที่ใช้ไป: {sum} / 5 ใบ
+        <div style={{ marginTop: '1rem', fontWeight: 'bold', color: sum !== 5 ? 'red' : 'var(--primary-color)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <span>สลากที่ใช้ไป: {sum} / 5 ใบ</span>
+          <span>งบประมาณคงเหลือ: {400 - (sum * 80)} บาท</span>
         </div>
       </div>
 

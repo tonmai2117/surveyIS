@@ -38,7 +38,7 @@ function Page5({ onNext, updateData, formData }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>ส่วนที่ 3: การทดสอบพฤติกรรมการเลือกตัวเลข (Selection Behavior)</h2>
+      <h2>ส่วนที่ 3: การทดสอบพฤติกรรมการเลือกตัวเลข </h2>
       <p>คำชี้แจง: จำลองสถานการณ์ว่าท่านกำลังจะซื้อสลากในงวดที่จะถึงนี้ โปรดกรอกตัวเลข 6 หลัก</p>
 
       <div className="question-block">

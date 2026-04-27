@@ -46,9 +46,9 @@ function Page6({ onNext, updateData, formData }) {
       </div>
 
       <div className="question-block">
-        <div className="question-text">2. ในการออกรางวัลสลากกินแบ่งรัฐบาล ระหว่างชุดตัวเลข 123456 กับชุดตัวเลขเลขที่ 598321 เลขชุดใดมีโอกาสถูกรางวัลที่ 1 มากกว่ากัน?</div>
+        <div className="question-text">2. ในการออกรางวัลสลากกินแบ่งรัฐบาล ระหว่างชุดตัวเลข 999999 กับชุดตัวเลขเลขที่ 598321 เลขชุดใดมีโอกาสถูกรางวัลที่ 1 มากกว่ากัน?</div>
         <div className="radio-group">
-          {['ก. 598321 มีโอกาสน้อยกว่า', 'ข. 123456 มีโอกาสน้อยกว่า', 'ค. ทั้งสองเลขมีโอกาสถูกรางวัลเท่ากันเป๊ะ'].map(option => (
+          {['ก. 598321 มีโอกาสน้อยกว่า', 'ข. 999999 มีโอกาสน้อยกว่า', 'ค. ทั้งสองเลขมีโอกาสถูกรางวัลเท่ากันเป๊ะ'].map(option => (
             <label key={option} className={`radio-label ${data.Stat_Q2 === option ? 'selected' : ''}`}>
               <input type="radio" name="Stat_Q2" value={option} checked={data.Stat_Q2 === option} onChange={(e) => handleChange('Stat_Q2', e.target.value)} className="radio-input" />
               {option}
