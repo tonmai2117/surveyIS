@@ -53,6 +53,9 @@ function Page7({ onNext, updateData, formData, submitToGoogle }) {
       <div className="question-block" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
         <div className="question-text" style={{ margin: 0 }}>
           เลขชุดที่ 1: <strong>{formData.Random_Number || '000000'}</strong>
+          <div style={{ fontSize: '0.85em', color: '#666', marginTop: '4px' }}>
+            (จากการสุ่ม: {formData.Random_Reason || 'ไม่มีข้อมูล'})
+          </div>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <input
@@ -70,6 +73,9 @@ function Page7({ onNext, updateData, formData, submitToGoogle }) {
       <div className="question-block" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
         <div className="question-text" style={{ margin: 0 }}>
           เลขชุดที่ 2: <strong>{formData.Personal_Number || '000000'}</strong>
+          <div style={{ fontSize: '0.85em', color: '#666', marginTop: '4px' }}>
+            (สัญญาณภายใน: {formData.Personal_Reason || 'ไม่มีข้อมูล'})
+          </div>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <input
@@ -87,6 +93,9 @@ function Page7({ onNext, updateData, formData, submitToGoogle }) {
       <div className="question-block" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
         <div className="question-text" style={{ margin: 0 }}>
           เลขชุดที่ 3: <strong>{formData.Social_Number || '000000'}</strong>
+          <div style={{ fontSize: '0.85em', color: '#666', marginTop: '4px' }}>
+            (สัญญาณภายนอก: {formData.Social_Reason || 'ไม่มีข้อมูล'})
+          </div>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <input

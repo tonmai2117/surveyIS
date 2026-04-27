@@ -121,6 +121,28 @@ function Page8({ isSubmitting, submitSuccess, formData }) {
             <p style={{ lineHeight: '1.7', color: '#334155', fontSize: '1.05rem', margin: 0 }}>
               {persona.description}
             </p>
+
+            <div style={{ marginTop: '2rem', textAlign: 'center', borderTop: '1px dashed #cbd5e1', paddingTop: '1.5rem' }}>
+              <h4 style={{ color: 'var(--text-dark)', marginBottom: '0.5rem', fontSize: '1.15rem' }}>
+                ได้ผลลัพธ์สายไหน... แคปไปโชว์ให้โลกรู้
+              </h4>
+              <div style={{ color: '#475569', fontSize: '0.95rem', marginBottom: '0.25rem', marginTop: 0 }}>
+                ตัวตนนักช็อปสลากซ่อนอยู่ในตัวคุณ แสกนเลย
+                <div style={{ fontSize: '1.2rem', marginTop: '0.5rem', letterSpacing: '8px', marginLeft: '8px' }}>
+                  👇 👇
+                </div>
+              </div>
+              <img 
+                src="/qrcode.png" 
+                alt="QR Code" 
+                style={{ width: '150px', height: '150px', objectFit: 'contain', borderRadius: '8px' }}
+              />
+              <div style={{ marginTop: '0.5rem', fontSize: '0.85rem' }}>
+                <a href="https://surveyis.vercel.app/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary-color)', textDecoration: 'none', fontWeight: '500' }}>
+                  https://surveyis.vercel.app/
+                </a>
+              </div>
+            </div>
           </div>
 
           <p style={{ fontSize: '0.9rem', color: 'var(--text-light)' }}>
