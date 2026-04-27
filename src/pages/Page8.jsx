@@ -126,18 +126,15 @@ function Page8({ isSubmitting, submitSuccess, formData }) {
               <h4 style={{ color: 'var(--text-dark)', marginBottom: '0.5rem', fontSize: '1.15rem' }}>
                 ได้ผลลัพธ์สายไหน... แคปไปโชว์ให้โลกรู้
               </h4>
-              <div style={{ color: '#475569', fontSize: '0.95rem', marginBottom: '0.25rem', marginTop: 0 }}>
+              <div style={{ color: '#475569', fontSize: '0.95rem', marginBottom: 0, marginTop: 0 }}>
                 ตัวตนนักช็อปสลากซ่อนอยู่ในตัวคุณ แสกนเลย
-                <div style={{ fontSize: '1.2rem', marginTop: '0.5rem', letterSpacing: '8px', marginLeft: '8px' }}>
-                  👇 👇
-                </div>
               </div>
               <img 
                 src="/qrcode.png" 
                 alt="QR Code" 
-                style={{ width: '150px', height: '150px', objectFit: 'contain', borderRadius: '8px' }}
+                style={{ width: '150px', height: '150px', objectFit: 'contain', borderRadius: '8px', display: 'block', margin: '-22px auto 0' }}
               />
-              <div style={{ marginTop: '0.5rem', fontSize: '0.85rem' }}>
+              <div style={{ marginTop: '-35px', fontSize: '0.85rem' }}>
                 <a href="https://surveyis.vercel.app/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary-color)', textDecoration: 'none', fontWeight: '500' }}>
                   https://surveyis.vercel.app/
                 </a>
