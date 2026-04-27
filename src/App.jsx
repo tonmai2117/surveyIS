@@ -23,6 +23,19 @@ function App() {
   const totalPages = 11;
   const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyFkwhBwAq4ghFJTLFtjaaIvclKNgTq0GdGsfwyOVMU6mVp7tgmfU376TE1L2u2x-MP/exec';
 
+  const getBangkokTimestamp = () => {
+    return new Date().toLocaleString("sv-SE", {
+      timeZone: "Asia/Bangkok",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false,
+    });
+  };
+
   const handleNext = (nextPg) => {
     // If we jump completely to page 11 early, we DO NOT submit data
     // because they failed consent or screening. We just show the thank you page.
@@ -30,6 +43,11 @@ function App() {
       setCurrentPage(11);
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
+    }
+
+    // Capture the exact time they start the survey (transitioning from Page 0 to Page 1)
+    if (currentPage === 0) {
+      updateData("Survey_Start_Timestamp", getBangkokTimestamp());
     }
 
     // If they finished page 10 naturally, we go to 11 and submit
@@ -46,19 +64,6 @@ function App() {
 
   const updateData = (key, value) => {
     setFormData(prev => ({ ...prev, [key]: value }));
-  };
-
-  const getBangkokTimestamp = () => {
-    return new Date().toLocaleString("sv-SE", {
-      timeZone: "Asia/Bangkok",
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-      hour12: false,
-    });
   };
 
   // Allow explicit passed data if state hasn't updated immediately
