@@ -10,12 +10,31 @@ function Page7({ onNext, updateData, formData, submitToGoogle }) {
   const sum = Number(data.Allocated_Set_1) + Number(data.Allocated_Set_2) + Number(data.Allocated_Set_3);
 
   const handleChange = (name, value) => {
-    let num = Number(value.replace(/\D/g, ''));
-    if (isNaN(num)) num = 0;
-
-    // Validate if the intended change exceeds 5 tickets, we just cap it or block it. Better to let them type if it's less than 5 total.
+    let strValue = value.replace(/\D/g, '');
+    
     setData(prev => {
-      const remainingSumWithoutCurrent = sum - Number(prev[name]);
+      const oldVal = prev[name];
+      const oldStr = String(oldVal);
+      
+      // Auto-replace behavior:
+      // If the user types a new digit without deleting the old one (e.g. '02' or '12')
+      // extract the newly typed digit so they don't have to manually delete first.
+      if (strValue.length > 1) {
+        if (strValue.startsWith(oldStr) && oldStr !== '') {
+          strValue = strValue.slice(oldStr.length);
+        } else if (strValue.endsWith(oldStr) && oldStr !== '') {
+          strValue = strValue.slice(0, strValue.length - oldStr.length);
+        } else {
+          strValue = strValue.slice(-1);
+        }
+      }
+
+      let num = Number(strValue);
+      if (isNaN(num)) num = 0;
+
+      const remainingSumWithoutCurrent = sum - Number(oldVal);
+      
+      // Strict limit: cannot exceed 5 total. If exceeded, clamp to max available.
       if (remainingSumWithoutCurrent + num > 5) {
         return { ...prev, [name]: 5 - remainingSumWithoutCurrent };
       }
